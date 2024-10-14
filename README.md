@@ -3,14 +3,15 @@
 ## Visão Geral
 
 Projeto de modelagem de dados para um sistema de armazenamento (banco de dados) e análise dos dados coletados pelos sensores para ajustar a quantidade de produtos e água aplicados na plantação.
+Este modelo de dados permite um gerenciamento detalhado de cultivos agrícolas, desde o planejamento até o monitoramento, incluindo aplicação de insumos e leituras de sensores para otimização da produção.
 
-## Tabelas
+## MER - Entidades
 
 ### TIPO_CULTURA
 
 Armazena informações sobre os diferentes tipos de culturas geridas pelo modelo.
 
-| Campo        | Tipo         | Descrição                              |
+| Atributo     | Tipo         | Descrição                              |
 | ------------ | ------------ | -------------------------------------- |
 | id_cultura   | NUMERIC(6)   | Identificador único do tipo de cultura |
 | nome         | VARCHAR(100) | Nome da cultura                        |
@@ -20,7 +21,7 @@ Armazena informações sobre os diferentes tipos de culturas geridas pelo modelo
 
 Contém dados sobre as áreas específicas (com extensão e localização) de cada cultura e sob observação de um ou mais sensores (a mesma cultura pode ter várias áreas atribuídas e vários sensores instalados).
 
-| Campo           | Tipo          | Descrição                                  |
+| Atributo        | Tipo          | Descrição                                  |
 | --------------- | ------------- | ------------------------------------------ |
 | id_area         | NUMERIC(6)    | Identificador único da área de cultivo     |
 | id_cultura      | NUMERIC(6)    | Referência ao tipo de cultura cultivada    |
@@ -31,7 +32,7 @@ Contém dados sobre as áreas específicas (com extensão e localização) de ca
 
 Lista os diferentes tipos de insumos utilizados no cultivo e que são alvo de recomendações e previsões para ajustes nas diferentes culturas.
 
-| Campo     | Tipo         | Descrição                             |
+| Atributo  | Tipo         | Descrição                             |
 | --------- | ------------ | ------------------------------------- |
 | id_insumo | NUMERIC(6)   | Identificador único do tipo de insumo |
 | nome      | VARCHAR(100) | Nome do insumo                        |
@@ -41,7 +42,7 @@ Lista os diferentes tipos de insumos utilizados no cultivo e que são alvo de re
 
 Registra previsões e ajustes para aplicação de insumos em áreas específicas. Essas previsões podem ser ajustes e aplicações de insumos imediatos ou para uma data futura.
 
-| Campo            | Tipo          | Descrição                              |
+| Atributo         | Tipo          | Descrição                              |
 | ---------------- | ------------- | -------------------------------------- |
 | id_previsao      | NUMERIC(6)    | Identificador único da previsão/ajuste |
 | id_area          | NUMERIC(6)    | Referência à área de cultivo           |
@@ -55,7 +56,7 @@ Registra previsões e ajustes para aplicação de insumos em áreas específicas
 
 Registra as aplicações efetivas de insumos nas áreas de cultivo.
 
-| Campo           | Tipo          | Descrição                                  |
+| Atributo        | Tipo          | Descrição                                  |
 | --------------- | ------------- | ------------------------------------------ |
 | id_aplic_insumo | NUMERIC(6)    | Identificador único da aplicação de insumo |
 | id_area         | NUMERIC(6)    | Referência à área de cultivo               |
@@ -69,7 +70,7 @@ Registra as aplicações efetivas de insumos nas áreas de cultivo.
 
 Contém informações sobre os sensores utilizados para monitoramento das áreas de cultivo.
 
-| Campo     | Tipo         | Descrição                     |
+| Atributo  | Tipo         | Descrição                     |
 | --------- | ------------ | ----------------------------- |
 | id_sensor | NUMERIC(6)   | Identificador único do sensor |
 | id_area   | NUMERIC(6)   | Referência à área monitorada  |
@@ -81,7 +82,7 @@ Contém informações sobre os sensores utilizados para monitoramento das áreas
 
 Armazena as leituras realizadas pelos sensores nas áreas de cultivo.
 
-| Campo           | Tipo          | Descrição                      |
+| Atributo        | Tipo          | Descrição                      |
 | --------------- | ------------- | ------------------------------ |
 | id_leitura      | NUMERIC(6)    | Identificador único da leitura |
 | id_area         | NUMERIC(6)    | Referência à área monitorada   |
@@ -122,5 +123,3 @@ Armazena as leituras realizadas pelos sensores nas áreas de cultivo.
 
 8. TIPO_INSUMO (1) -> (N) PREVISAO_AJUSTE
    - Um tipo de insumo pode estar associado a várias previsões ou ajustes.
-
-Este modelo de dados permite um gerenciamento detalhado de cultivos agrícolas, desde o planejamento até o monitoramento, incluindo aplicação de insumos e leituras de sensores para otimização da produção.
